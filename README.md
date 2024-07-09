@@ -44,20 +44,19 @@
 
     ```bash
     pip install -r requirements.txt
-    ```
+
 
 ## **Run the Flask application:**
-
-    ```bash
+- Run your python file using :
+    ```bash  
     python app.py
-    ```
-
+    
 ## **Installation**
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/abuawaish/final_project_pw.git
-   ```
+
 - Open a web browser and go to http://192.168.206.14:5000 to access the application.
 - Fill in the journey details in the form and submit to get the predicted flight fare.
 
@@ -74,15 +73,15 @@
 
 ## **Acknowledgments**
 
-- The dataset used for training the model was obtained from [Kaggle]
-(https://www.kaggle.com/datasets/nikhilmittal/flight-fare-prediction-mh).
+- The dataset used for training the model was obtained from 
+![Kaggle](https://www.kaggle.com/datasets/nikhilmittal/flight-fare-prediction-mh).
 - Inspiration for the project from various online tutorials and courses.
 
 ## **Screenshots**
 
 - Here is a screenshot of the application:
-![Application Screenshot](https://drive.google.com/file/d/1fhoBl2it7Udt7o7YcgjLO5Akiar1_0i7/view?usp=sharing)
-![Application Screenshot](https://drive.google.com/file/d/1D5Z87WS_rlTD9RitH3HhnZtQ_YBZeLJk/view?usp=sharing)
+- 1. ![Application Screenshot](https://drive.google.com/file/d/1fhoBl2it7Udt7o7YcgjLO5Akiar1_0i7/view?usp=sharing)
+- 2. ![Application Screenshot](https://drive.google.com/file/d/1D5Z87WS_rlTD9RitH3HhnZtQ_YBZeLJk/view?usp=sharing)
 
 ## **Video Demo**
 
