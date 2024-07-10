@@ -184,38 +184,39 @@
 ## **High-Level Architecture Diagram**
 
 ```mermaid
-   graph LR
+graph LR
    A[User Interface] <---> B[Flask Backend] <---> C[Prediction Model]
-
+   
    B --> D[Data Processing]
    B --> E[User Input]
    C --> F[Database]
+   ```
 
 ## **Low-Level Architecture Diagram**
- 
+
 ```mermaid
-   graph TD
-   A[home.html] --> B[Flask Application]
-   B --> C[Data Processing]
-   C --> D[Database]
+graph TD
+    A[home.html] --> B[Flask Application]
+    B --> C[Data Processing]
+    C --> D[Database]
 
-   B --> E[Prediction Model]
-   E --> F[flight_rf.pkl]
+    B --> E[Prediction Model]
+    E --> F[flight_rf.pkl]
 
-   B -.->|Routes:| G
-   G[Routes: 
-     - home() 
-     - predict()]
-   C -.->|Processes:| H
-   H[Data Processing:
-     - Input Parsing
-     - Feature Encoding]
-   D -.->|Database Files:| I
-   I[Database:
-    - database.py
-    - schema.sql]
+    B -.->|Routes:| G
+    G[Routes:
+        - home()
+        - predict()]
+    C -.->|Processes:| H
+    H[Data Processing:
+        - Input Parsing
+        - Feature Encoding]
+    D -.->|Database Files:| I
+    I[Database:
+        - database.py
+        - schema.sql]
 
-   E -.->|Model Details:| J
-   J[Prediction Model:
-     - Random Forest Model
-     - Serialized with pickle]
+    E -.->|Model Details:| J
+    J[Prediction Model:
+        - Random Forest Model
+        - Serialized with pickle]
