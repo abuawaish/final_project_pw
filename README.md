@@ -186,7 +186,7 @@
 ```mermaid
 graph LR
    A[User Interface] <---> B[Flask Backend] <---> C[Prediction Model]
-   
+
    B --> D[Data Processing]
    B --> E[User Input]
    C --> F[Database]
@@ -220,3 +220,4 @@ graph TD
     J[Prediction Model:
         - Random Forest Model
         - Serialized with pickle]
+    ```
