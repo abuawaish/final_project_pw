@@ -89,4 +89,8 @@
 
 [![Watch the video](https://data.textstudio.com/output/sample/animated/1/3/0/5/demonstration-3-15031.gif)](https://drive.google.com/file/d/1AKgPkT8s3Mrb75x8QQN7mFf3t8_-G9ln/view?usp=sharing)
 
+## **Deployment**
 
+- This project is deployed on Render.com. You can access the live model through the following link:
+
+    [Live Model](https://flight-fare-model.onrender.com)
