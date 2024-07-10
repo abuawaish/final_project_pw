@@ -40,17 +40,6 @@
 
 4. Output: The predicted fare is displayed to the user on the web page.
 
-## **High-Level Architecture Diagram**
-
-```mermaid
-graph LR
-A[User Interface] <---> B[Flask Backend] <---> C[Prediction Model]
-
-B --> D[Data Processing]
-B --> E[User Input]
-C --> F[Database]
-
-
 ## **Technologies Used**
 
 - **Flask** : A lightweight WSGI web application framework in Python.
@@ -131,35 +120,6 @@ C --> F[Database]
 
 - Renders home.html with the prediction result.
 
-## **Low-Level Architecture Diagram**
-
-```mermaid
-graph TD
-A[home.html] --> B[Flask Application]
-B --> C[Data Processing]
-C --> D[Database]
-
-B --> E[Prediction Model]
-E --> F[flight_rf.pkl]
-
-B -.->|Routes:| G
-G[Routes: 
-  - home() 
-  - predict()]
-C -.->|Processes:| H
-H[Data Processing:
-  - Input Parsing
-  - Feature Encoding]
-D -.->|Database Files:| I
-I[Database:
-  - database.py
-  - schema.sql]
-
-E -.->|Model Details:| J
-J[Prediction Model:
-  - Random Forest Model
-  - Serialized with pickle]
-
 ## **Usage**
 
 - Ensure all dependencies are installed. You can use the following command to install the required Python packages: 
@@ -220,3 +180,42 @@ J[Prediction Model:
 - This project is deployed on Render.com. You can access the live model through the following link:
 
     [Live Model](https://flight-fare-model.onrender.com)
+
+## **High-Level Architecture Diagram**
+
+```mermaid
+   graph LR
+   A[User Interface] <---> B[Flask Backend] <---> C[Prediction Model]
+
+   B --> D[Data Processing]
+   B --> E[User Input]
+   C --> F[Database]
+
+## **Low-Level Architecture Diagram**
+ 
+```mermaid
+   graph TD
+   A[home.html] --> B[Flask Application]
+   B --> C[Data Processing]
+   C --> D[Database]
+
+   B --> E[Prediction Model]
+   E --> F[flight_rf.pkl]
+
+   B -.->|Routes:| G
+   G[Routes: 
+     - home() 
+     - predict()]
+   C -.->|Processes:| H
+   H[Data Processing:
+     - Input Parsing
+     - Feature Encoding]
+   D -.->|Database Files:| I
+   I[Database:
+    - database.py
+    - schema.sql]
+
+   E -.->|Model Details:| J
+   J[Prediction Model:
+     - Random Forest Model
+     - Serialized with pickle]
