@@ -192,20 +192,4 @@ graph LR
    C --> F[Database]
    ```
 
-## **Low-Level Architecture Diagram**
-
-```mermaid
-graph TD
-    A[home.html] --> B[Flask Application]
-    B --> C[Data Processing]
-    C --> D[Database]
-
-    B --> E[Prediction Model]
-    E --> F[flight_rf.pkl]
-
-    B -.-> G[Routes:<br/>- home()<br/>- predict()]
-    C -.-> H[Data Processing:<br/>- Input Parsing<br/>- Feature Encoding]
-    D -.-> I[Database Files:<br/>- database.py<br/>- schema.sql]
-
-    E -.-> J[Prediction Model:\n - Random Forest Model\n - Serialized with pickle]
 
