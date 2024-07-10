@@ -79,8 +79,8 @@
 ## **Screenshots**
 
 - Here is a screenshot of the application:
-- 1. Application Screenshot - [https://drive.google.com/file/d/1fhoBl2it7Udt7o7YcgjLO5Akiar1_0i7/view?usp=sharing]
-- 2. Application Screenshot - [https://drive.google.com/file/d/1D5Z87WS_rlTD9RitH3HhnZtQ_YBZeLJk/view?usp=sharing]
+- 1. [![Application Screenshot](https://drive.google.com/file/d/1fhoBl2it7Udt7o7YcgjLO5Akiar1_0i7/view?usp=sharing)]
+- 2. [![Application Screenshot](https://drive.google.com/file/d/1D5Z87WS_rlTD9RitH3HhnZtQ_YBZeLJk/view?usp=sharing)]
 
 ## **Video Demo**
 
