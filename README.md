@@ -203,21 +203,9 @@ graph TD
     B --> E[Prediction Model]
     E --> F[flight_rf.pkl]
 
-    B -.->|Routes:| G
-    G[Routes:
-        - home()
-        - predict()]
-    C -.->|Processes:| H
-    H[Data Processing:
-        - Input Parsing
-        - Feature Encoding]
-    D -.->|Database Files:| I
-    I[Database:
-        - database.py
-        - schema.sql]
+    B -.-> G[Routes:\n - home()\n - predict()]
+    C -.-> H[Data Processing:\n - Input Parsing\n - Feature Encoding]
+    D -.-> I[Database Files:\n - database.py\n - schema.sql]
 
-    E -.->|Model Details:| J
-    J[Prediction Model:
-        - Random Forest Model
-        - Serialized with pickle]
-    ```
+    E -.-> J[Prediction Model:\n - Random Forest Model\n - Serialized with pickle]
+
