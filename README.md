@@ -42,19 +42,14 @@
 
 ## **High-Level Architecture Diagram**
 
-+----------------+          +------------------+         +-----------------+
-|                |          |                  |         |                 |
-|  User Interface|<-------->|  Flask Backend   |<------->|  Prediction Model|
-|                |          |                  |         |                 |
-+----------------+          +------------------+         +-----------------+
-       ^                           |                           |
-       |                           |                           |
-       |                           v                           v
-+----------------+         +-------------------+       +--------------------+
-|                |         |                   |       |                    |
-|   User Input   |         | Data Processing   |       |    Database        |
-|                |         |                   |       |                    |
-+----------------+         +-------------------+       +--------------------+
+```mermaid
+graph LR
+A[User Interface] <---> B[Flask Backend] <---> C[Prediction Model]
+
+B --> D[Data Processing]
+B --> E[User Input]
+C --> F[Database]
+
 
 ## **Technologies Used**
 
@@ -138,42 +133,32 @@
 
 ## **Low-Level Architecture Diagram**
 
-+---------------------------+       +---------------------------+
-|                           |       |                           |
-|        home.html          |       |        flight_rf.pkl       |
-|                           |       |                           |
-+-----------^---------------+       +-------------^-------------+
-            |                                     |
-            |                                     |
-            |                                     |
-+-----------|---------------+       +-------------|-------------+
-|                           |       |                           |
-|         Flask             |       |       Prediction Model    |
-|      Application          |       |                           |
-|  - app.py                 |       |  - Random Forest Model    |
-|  - Routes:                |       |  - Serialized with pickle |
-|    - home()               |       |                           |
-|    - predict()            |       |                           |
-|                           |       |                           |
-+-----------^---------------+       +-------------^-------------+
-            |                                     |
-            |                                     |
-+-----------|---------------+       +-------------|-------------+
-|                           |       |                           |
-|       Data Processing     |       |       Categorical         |
-|       - Input Parsing     |       |       Encoding            |
-|       - Feature Encoding  |       |                           |
-|                           |       |                           |
-+-----------^---------------+       +-------------|-------------+
-            |                                     |
-            |                                     |
-+-----------|---------------+       +-------------|-------------+
-|                           |       |                           |
-|       Database            |       |                           |
-|       - database.py       |       |                           |
-|       - schema.sql        |       |                           |
-|                           |       |                           |
-+---------------------------+       +---------------------------+
+```mermaid
+graph TD
+A[home.html] --> B[Flask Application]
+B --> C[Data Processing]
+C --> D[Database]
+
+B --> E[Prediction Model]
+E --> F[flight_rf.pkl]
+
+B -.->|Routes:| G
+G[Routes: 
+  - home() 
+  - predict()]
+C -.->|Processes:| H
+H[Data Processing:
+  - Input Parsing
+  - Feature Encoding]
+D -.->|Database Files:| I
+I[Database:
+  - database.py
+  - schema.sql]
+
+E -.->|Model Details:| J
+J[Prediction Model:
+  - Random Forest Model
+  - Serialized with pickle]
 
 ## **Usage**
 
