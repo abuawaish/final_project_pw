@@ -208,5 +208,4 @@ graph TD
     D -.-> I[Database Files:<br/>- database.py<br/>- schema.sql]
 
     E -.-> J[Prediction Model:<br/>- Random Forest Model<br/>- Serialized with pickle]
-    ```
 
