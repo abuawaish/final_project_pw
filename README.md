@@ -1,14 +1,29 @@
 # **Flight Fare Prediction**
 
+## **High-Level Design (HLD)**
 ## **Overview**
+
 - This project is a web application that predicts the fare of a flight based on various input features provided by the user. The application is built using Flask for the backend and employs a Random Forest model for the prediction, which has been trained on historical flight data
 
+## **User Interface (UI)**
+
+- **Home Page** : A form for users to input flight details (departure time, arrival time, stops, airline, source, destination).
+- **Prediction Page** : Displays the predicted flight fare based on the user inputs.
+
+## **Backend**
+
+- **Flask Application** : Handles HTTP requests, processes user inputs, interacts with the database, and returns predictions.
+- **Prediction Model** : A pre-trained Random Forest model serialized using pickle.
+- **Database** : Stores user inputs and prediction results.
+
 ## **Features**
+
 - Predicts flight fare based on user inputs.
 - User inputs include date and time of journey, departure and arrival times, number of stops, airline, source, and destination.
 - Utilizes a pre-trained Random Forest model for accurate predictions.
 
 ## **How It Works**
+
 1. User Input: The user provides details about their journey through a web form, including:
 
 - Date and time of departure and arrival
@@ -25,6 +40,22 @@
 
 4. Output: The predicted fare is displayed to the user on the web page.
 
+## **High-Level Architecture Diagram**
+
++----------------+          +------------------+         +-----------------+
+|                |          |                  |         |                 |
+|  User Interface|<-------->|  Flask Backend   |<------->|  Prediction Model|
+|                |          |                  |         |                 |
++----------------+          +------------------+         +-----------------+
+       ^                           |                           |
+       |                           |                           |
+       |                           v                           v
++----------------+         +-------------------+       +--------------------+
+|                |         |                   |       |                    |
+|   User Input   |         | Data Processing   |       |    Database        |
+|                |         |                   |       |                    |
++----------------+         +-------------------+       +--------------------+
+
 ## **Technologies Used**
 
 - **Flask** : A lightweight WSGI web application framework in Python.
@@ -35,11 +66,117 @@
 - **Flask-CORS** : To handle Cross-Origin Resource Sharing (CORS).
 
 ## **Project Structure**
+
 - app.py: The main Flask application file.
 - model/flight_rf.pkl: The pre-trained Random Forest model serialized using pickle.
 - templates/home.html: The HTML template for the home page.
 
+## **Low-Level Design (LLD)**
+## **Detailed Components**
+
+## **1. Flask Application (app.py)**
+### **Routes** :
+
+- **home()** : Renders the home page with the input form.
+- **predict()** : Handles form submission, processes inputs, makes predictions, stores data in the database, and renders the result.
+
+### **Functions** :
+
+- **process_input()** : Extracts and processes date, time, and categorical features from user inputs.
+- **make_prediction()** : Uses the pre-trained model to predict the flight fare.
+- **store_data()** : Stores user inputs and prediction result in the database.
+
+## **2. Templates**
+
+- **home.html** : The HTML template for the home page, containing the input form and displaying the prediction result.
+
+## **3. Model (flight_rf.pkl)**
+
+- A pre-trained Random Forest model serialized using pickle.
+
+## **4. Database (database.py)**
+
+### **Functions** :
+- **create_connection()** : Establishes a connection to the database.
+- **create_table()** : Creates tables in the database using schema.sql.
+- **insert_data()** : Inserts user inputs and prediction result into the database.
+
+## **5. Schema (schema.sql)**
+
+- SQL script to create necessary tables for storing user inputs and prediction results.
+
+# **Detailed Data Flow**
+## 1. **User Input**
+
+- **Form Fields** : Dep_Time, Arrival_Time, stops, airline, Source, Destination
+- User submits the form.
+
+## **2. Request Handling (predict() function)**
+
+- Extracts form data using request.form.
+- Processes date and time fields using pd.to_datetime.
+- Encodes categorical variables (airline, source, destination).
+
+## **3. Data Processing (within predict() function)**
+
+- Extracts day, month, hour, minute from date and time fields.
+- Encodes categorical features into binary format.
+- Calculates flight duration in hours and minutes.
+
+## **4. Prediction (make_prediction() function)**
+
+- Passes processed data to the Random Forest model.
+- Receives the predicted fare.
+
+## **5. Database Interaction (store_data() function)**
+
+- Stores the user inputs and prediction result in the database.
+
+## **6. Response**
+
+- Renders home.html with the prediction result.
+
+## **Low-Level Architecture Diagram**
+
++---------------------------+       +---------------------------+
+|                           |       |                           |
+|        home.html          |       |        flight_rf.pkl       |
+|                           |       |                           |
++-----------^---------------+       +-------------^-------------+
+            |                                     |
+            |                                     |
+            |                                     |
++-----------|---------------+       +-------------|-------------+
+|                           |       |                           |
+|         Flask             |       |       Prediction Model    |
+|      Application          |       |                           |
+|  - app.py                 |       |  - Random Forest Model    |
+|  - Routes:                |       |  - Serialized with pickle |
+|    - home()               |       |                           |
+|    - predict()            |       |                           |
+|                           |       |                           |
++-----------^---------------+       +-------------^-------------+
+            |                                     |
+            |                                     |
++-----------|---------------+       +-------------|-------------+
+|                           |       |                           |
+|       Data Processing     |       |       Categorical         |
+|       - Input Parsing     |       |       Encoding            |
+|       - Feature Encoding  |       |                           |
+|                           |       |                           |
++-----------^---------------+       +-------------|-------------+
+            |                                     |
+            |                                     |
++-----------|---------------+       +-------------|-------------+
+|                           |       |                           |
+|       Database            |       |                           |
+|       - database.py       |       |                           |
+|       - schema.sql        |       |                           |
+|                           |       |                           |
++---------------------------+       +---------------------------+
+
 ## **Usage**
+
 - Ensure all dependencies are installed. You can use the following command to install the required Python packages: 
 
     ```bash
@@ -47,6 +184,7 @@
 
 
 ## **Run the Flask application:**
+
 - Run your python file using :
     ```bash  
     python app.py
@@ -73,15 +211,18 @@
 
 ## **Acknowledgments**
 
-- The dataset used for training the model was obtained from Kaggle - [https://www.kaggle.com/datasets/nikhilmittal/flight-fare-prediction-mh].
+- The dataset used for training the model was obtained from 
+
+    [Kaggle](https://www.kaggle.com/datasets/nikhilmittal/flight-fare-prediction-mh).
+
 - Inspiration for the project from various online tutorials and courses.
 
 ## **Screenshots**
 
 - Here is a screenshot of the application:
 
-- 1. Application Screenshot - [https://drive.google.com/file/d/1fhoBl2it7Udt7o7YcgjLO5Akiar1_0i7/view?usp=sharing]
-- 2. Application Screenshot - [https://drive.google.com/file/d/1D5Z87WS_rlTD9RitH3HhnZtQ_YBZeLJk/view?usp=sharing]
+1. [Application Screenshot](https://drive.google.com/file/d/1fhoBl2it7Udt7o7YcgjLO5Akiar1_0i7/view?usp=sharing)
+2. [Application Screenshot](https://drive.google.com/file/d/1D5Z87WS_rlTD9RitH3HhnZtQ_YBZeLJk/view?usp=sharing)
 
 ## **Video Demo**
 
