@@ -207,5 +207,5 @@ graph TD
     C -.-> H[Data Processing:<br/>- Input Parsing<br/>- Feature Encoding]
     D -.-> I[Database Files:<br/>- database.py<br/>- schema.sql]
 
-    E -.-> J[Prediction Model:<br/>- Random Forest Model<br/>- Serialized with pickle]
+    E -.-> J[Prediction Model:\n - Random Forest Model\n - Serialized with pickle]
 
