@@ -190,6 +190,24 @@ graph LR
    B --> D[Data Processing]
    B --> E[User Input]
    C --> F[Database]
-   ```
+```
 
+## **Low-Level Architecture Diagram**
+
+```mermaid
+graph TD
+    A[home.html] --> B[Flask Application]
+    B --> C[Data Processing]
+    C --> D[Database]
+
+    B --> E[Prediction Model]
+    E --> F[flight_rf.pkl]
+
+    C --> H1[Input Parsing]
+    C --> H2[Feature Encoding]
+    D --> I1[database.py]
+    D --> I2[schema.sql]
+
+    E --> J1[Random Forest Model]
+    E --> J2[Serialized with pickle]
 
